@@ -5,8 +5,34 @@
 // loggar postens ID till konsolen. Använd <button> för den klickbara länken.
 
 //<a> tag
+
+import { useState, useEffect } from "react";
+
 function App() {
-  return <div></div>;
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const data = await res.json();
+      setPosts(data.slice(0, 5));
+      console.log(posts);
+    }
+    getData();
+  }, []);
+
+  return (
+    <div>
+      {posts.map((p) => {
+        return (
+          <div key={p.id} className="flex flex-row">
+            <p>{p.title}</p>
+            <a onClick={() => console.log(p.id)}>Show Id</a>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default App;
