@@ -5,8 +5,29 @@
 // nedanför som använder din custom hook och visar räknarens värde
 // samt två knappar för att öka och minska värdet.
 
+import { useState } from "react";
+
+function useCounter(initialCount = 10) {
+  const [count, setCount] = useState(initialCount);
+  const sum = () => {
+    setCount(count + 1);
+  };
+  const sub = () => {
+    setCount(count - 1);
+  };
+  return { count, sum, sub };
+}
+
 function App() {
-  return <div></div>;
+  const { count, sum, sub } = useCounter(10);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={sum}>+</button>
+      <button onClick={sub}>-</button>
+    </div>
+  );
 }
 
 export default App;

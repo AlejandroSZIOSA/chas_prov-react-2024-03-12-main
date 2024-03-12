@@ -16,7 +16,6 @@ function App() {
       const res = await fetch("https://jsonplaceholder.typicode.com/posts");
       const data = await res.json();
       setPosts(data.slice(0, 5));
-      console.log(posts);
     }
     getData();
   }, []);
