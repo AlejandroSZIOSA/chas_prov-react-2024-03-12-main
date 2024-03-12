@@ -12,6 +12,7 @@ function HobbyList() {
 }
 
 function App() {
+  const [list, setList] = useState([]);
   const [input, setInput] = useState("");
 
   return <div></div>;
