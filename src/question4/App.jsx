@@ -6,8 +6,21 @@
 // Skapa en tredje barn-komponent som innehåller en knapp som kan växla tema.
 // Providern i App-komponenten ska omsluta de tre barn-komponenterna.
 
+import ChildOne from "./components/ChildOne";
+import ChildThree from "./components/ChildThree";
+import ChildTwo from "./components/ChildTwo";
+import { ColorProvider } from "./themeProvider";
+
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <ColorProvider>
+        <ChildOne />
+        <ChildTwo />
+        <ChildThree />
+      </ColorProvider>
+    </>
+  );
 }
 
 export default App;
