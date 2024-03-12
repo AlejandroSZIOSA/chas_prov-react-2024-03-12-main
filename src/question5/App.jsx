@@ -24,11 +24,14 @@
 //    Se exempel nedanför.
 
 import Panel from "./Panel";
+import { useState } from "react";
 
 function App() {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   return (
     <div>
-      <Panel title="Panel 1" collapsible={true}>
+      <Panel title="Panel 1" collapsible={isCollapsed}>
         <p>Det här är innehållet i panel 1. Det kan kollapsas.</p>
       </Panel>
       <Panel title="Panel 2">
