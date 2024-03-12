@@ -6,16 +6,53 @@
 // Använd useState för att hantera listan.
 
 import React from "react";
+import { useState } from "react";
 
-function HobbyList() {
-  return <div></div>;
+let id = 0;
+
+function HobbyList({ list, removeFn }) {
+  return (
+    <div>
+      <ol>
+        {list.map((h) => {
+          return (
+            <>
+              <li key={h.id}>{h.hobby}</li>
+              <button onClick={() => removeFn(h.id)}>Remove</button>
+            </>
+          );
+        })}
+      </ol>
+    </div>
+  );
 }
 
 function App() {
   const [list, setList] = useState([]);
   const [input, setInput] = useState("");
 
-  return <div></div>;
+  function handleRemove(id) {
+    const filteredHobbies = list.filter((h) => h.id != id);
+    setList(filteredHobbies);
+  }
+
+  function handleOnclickBtn() {
+    const hobby = {
+      id: id++,
+      hobby: input,
+    };
+
+    setList([...list, hobby]);
+  }
+
+  return (
+    <div>
+      <input type="text" onChange={(e) => setInput(e.target.value)} />
+      Hobby
+      <button onClick={handleOnclickBtn}>ADD</button>
+      <HobbyList list={list} removeFn={handleRemove} />
+    </div>
+  );
 }
 
 export default App;

@@ -4,6 +4,7 @@
 // Varje titel ska vara en klickbar länk som, när man klickar på den,
 // loggar postens ID till konsolen. Använd <button> för den klickbara länken.
 
+//<a> tag
 function App() {
   return <div></div>;
 }
